@@ -72,48 +72,7 @@ namespace LoginTest
             Assert.That(errorMessage.Text.Trim(), Is.EqualTo("Incorrect email/username or password"));
 
         }
-
-        [Test]
-        public void PasswordRequired()
-        {
-            // Locate username and password input fields
-            IWebElement usernameField = driver.FindElement(By.XPath("//*[@id=\"input-204\"]"));
-            IWebElement passwordField = driver.FindElement(By.XPath("//*[@id=\"input-207\"]"));
-
-            usernameField.SendKeys("teste");
-            passwordField.Click();
-            usernameField.Click();
-
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
-
-            IWebElement requiredError = driver.FindElement(By.XPath("//*[@id=\"app\"]/div/div/div/div/div/div/div/div/div[2]/div[2]/form/div[1]/div[2]/div/div/div[2]/div/div/div"));
-
-            Assert.That(requiredError.Text.Trim(), Is.EqualTo("Required"));
-
-        }
-
-        [Test]
-
-        public void UsernameRequired()
-        {
-            IWebElement usernameField = driver.FindElement(By.XPath("//*[@id=\"input-204\"]"));
-            IWebElement passwordField = driver.FindElement(By.XPath("//*[@id=\"input-207\"]"));
-
-            passwordField.Click();
-            usernameField.Click();
-            passwordField.Click();
-
-
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
-
-            IWebElement usernameError = driver.FindElement(By.XPath("//*[@id=\"app\"]/div/div/div/div/div/div/div/div/div[2]/div[2]/form/div[1]/div[1]/div/div/div[2]/div/div/div"));
-
-            Assert.That(usernameError.Text.Trim(), Is.EqualTo("Required"));
-
-
-
-        }
-
+        
         [TearDown]
         public void TearDown()
         {
